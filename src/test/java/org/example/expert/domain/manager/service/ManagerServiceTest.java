@@ -46,7 +46,7 @@ class ManagerServiceTest {
 
         // when & then
         InvalidRequestException exception = assertThrows(InvalidRequestException.class, () -> managerService.getManagers(todoId));
-        assertEquals("Manager not found", exception.getMessage());
+        assertEquals("Todo not found", exception.getMessage());
     }
 
     @Test
@@ -60,7 +60,6 @@ class ManagerServiceTest {
         ReflectionTestUtils.setField(todo, "user", null);
 
         ManagerSaveRequest managerSaveRequest = new ManagerSaveRequest(managerUserId);
-
         given(todoRepository.findById(todoId)).willReturn(Optional.of(todo));
 
         // when & then

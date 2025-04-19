@@ -53,12 +53,15 @@ public class CommentService {
         List<CommentResponse> dtoList = new ArrayList<>();
         for (Comment comment : commentList) {
             User user = comment.getUser();
+
             CommentResponse dto = new CommentResponse(
                     comment.getId(),
                     comment.getContents(),
                     new UserResponse(user.getId(), user.getEmail())
             );
+
             dtoList.add(dto);
+
         }
         return dtoList;
     }
